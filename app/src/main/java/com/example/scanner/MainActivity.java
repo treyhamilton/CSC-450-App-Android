@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 upc[0] = (intentResult.getContents());
                 textView.setText(intentResult.getContents());
                 try {
-                    flaskApiCall.flaskPostUpc(upc);
+                    new flaskApiCall().execute(upc);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

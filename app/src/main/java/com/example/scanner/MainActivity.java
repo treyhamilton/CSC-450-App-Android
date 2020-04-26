@@ -14,9 +14,12 @@ import android.widget.TextView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
+    String[] upc  = new String[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText("Cancelled");
             }
             else {
+                System.out.println(intentResult.getContents());
+                upc[0] = (intentResult.getContents());
                 textView.setText(intentResult.getContents());
+                try {
+                    flaskApiCall.flaskPostUpc(upc);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

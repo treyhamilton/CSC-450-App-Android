@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             public void onPageFinished(WebView view, String url) {
-                if(webView.getUrl().equals("http://107.12.107.68:5000/listManagement")) {
+                if(webView.getUrl().equals("http://107.12.107.68:5000/getAndPostUpc")) {
                     Intent myIntent = new Intent(view.getContext(), Scan.class);
                     startActivityForResult(myIntent, 0);
                 }
